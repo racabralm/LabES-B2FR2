@@ -23,21 +23,22 @@ class TestProgramaSocial:
         assert self.programa_seguro.nome_corresponde_a_busca("renda") is False
 
     # método 3
+    def test_possui_cadastro_unico(self):
+        # caso de teste 1: programa que exige Cadastro Único
+        assert self.programa_seguro.possui_cadastro_unico() is True
+        # caso de teste 2: programa que não exige Cadastro Único
+        assert self.programa_inseguro.possui_cadastro_unico() is False
 
-      #caso de teste 1: ...
-
-      #caso de teste 2: ...
-
-      
     # método 4
+    def test_criacao_do_programa(self):
+        # caso de teste 1: o nome informado no construtor é armazenado corretamente
+        assert self.programa_seguro.nome == "Bolsa Família"
+        # caso de teste 2: o link informado no construtor é armazenado corretamente
+        assert self.programa_inseguro.link_oficial == "http://siteinseguro.com"
 
-      #caso de teste 1: ...
-
-      #caso de teste 2: ...
-
-      
     # método 5
-
-      #caso de teste 1: ...
-
-      #caso de teste 2: ...
+    def test_busca_com_maiusculas_e_termo_parcial(self):
+        # caso de teste 1: busca com letras maiúsculas encontra o programa
+        assert self.programa_inseguro.nome_corresponde_a_busca("AUXÍLIO") is True
+        # caso de teste 2: busca por parte do nome (final da palavra) encontra o programa
+        assert self.programa_inseguro.nome_corresponde_a_busca("gás") is True
