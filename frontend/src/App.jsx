@@ -1,5 +1,19 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import {
+  Tucano,
+  Arara,
+  AraraAzul,
+  Borboleta,
+  Capivara,
+  Jabuti,
+  LoboGuara,
+  Onca,
+  Preguica,
+  Sagui,
+  Tamandua,
+  Tatu,
+} from "./Fauna.jsx";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -100,13 +114,13 @@ function App() {
           <div className="topo-conteudo">
             <div className="marca">
               <span className="marca-icone">GS</span>
-              <span>Guia Social</span>
+              <span>Guia Social</span> <Tucano className="marca-animal" />
             </div>
           </div>
         </header>
         <main className="estado-container">
           <div className="painel-status">
-            <div className="painel-status-icone">⏳</div>
+            <Capivara className="painel-status-animal" />
             <h2>Carregando benefícios...</h2>
             <p>Conectando ao servidor da API em <code>{API_URL || "/beneficios/"}</code></p>
           </div>
@@ -122,13 +136,13 @@ function App() {
           <div className="topo-conteudo">
             <div className="marca">
               <span className="marca-icone">GS</span>
-              <span>Guia Social</span>
+              <span>Guia Social</span> <Tucano className="marca-animal" />
             </div>
           </div>
         </header>
         <main className="estado-container">
           <div className="painel-status">
-            <div className="painel-status-icone">⚠️</div>
+            <Preguica className="painel-status-animal" />
             <h2>Não foi possível carregar os dados</h2>
             <p>
               O frontend tentou consultar a API em <strong>{API_URL || "/beneficios/"}</strong>, mas ela não respondeu.
@@ -153,7 +167,7 @@ function App() {
         <div className="topo-conteudo">
           <button className="marca" onClick={() => setPagina("catalogo")}>
             <span className="marca-icone">GS</span>
-            <span>Guia Social</span>
+            <span>Guia Social</span> <Tucano className="marca-animal" />
           </button>
 
           <nav className="navegacao" aria-label="Menu principal">
@@ -183,6 +197,12 @@ function App() {
 
       <main className="container">
         <section className="hero">
+          <Preguica className="fauna-hero fauna-preguica" />
+          <Tatu className="fauna-hero fauna-tatu" />
+          <Borboleta className="fauna-hero fauna-borboleta-1" />
+          <Borboleta className="fauna-hero fauna-borboleta-2" />
+          <Arara className="fauna-hero fauna-arara" />
+
           <span className="etiqueta">Catálogo de benefícios federais</span>
 
           <h1>Consulte Programas e Benefícios Sociais</h1>
@@ -193,6 +213,7 @@ function App() {
           </p>
 
           <div className="busca">
+            <Sagui className="busca-animal" />
             <input
               type="search"
               placeholder="Pesquisar benefício, categoria ou público..."
@@ -296,6 +317,7 @@ function App() {
 
               {lista.length === 0 && (
                 <div className="vazio">
+                  <Tamandua className="vazio-animal" />
                   Nenhum benefício encontrado nesta seleção.
                 </div>
               )}
@@ -308,7 +330,10 @@ function App() {
             <p>Compare até três programas sociais selecionados.</p>
 
             {selecionados.length === 0 ? (
-              <div className="vazio">Nenhum benefício adicionado.</div>
+              <div className="vazio">
+                <Tatu className="vazio-animal" />
+                Nenhum benefício adicionado.
+              </div>
             ) : (
               <div className="tabela-rolagem">
                 <table>
@@ -362,6 +387,17 @@ function App() {
           </section>
         )}
       </main>
+
+      <footer className="rodape">
+        <div className="rodape-fauna">
+          <Tamandua />
+          <LoboGuara />
+          <Onca />
+          <AraraAzul />
+          <Capivara />
+          <Jabuti />
+        </div>
+      </footer>
 
       {detalhes && (
         <div className="modal-fundo" onClick={() => setDetalhes(null)}>

@@ -1,18 +1,24 @@
 :root {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
+  font-variant-numeric: lining-nums;
   color: #1e293b;
   background: #f8fafc;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 
-  /* Paleta Rosa e Cinza */
-  --rosa-principal: #db2777;
-  --rosa-hover: #be185d;
-  --rosa-claro: #fdf2f8;
-  --rosa-medio: #fce7f3;
-  --rosa-borda: #fbcfe8;
-  --rosa-destaque: #f472b6;
+  /* Paleta inspirada no padrão gov.br */
+  --azul-principal: #1351b4;
+  --azul-hover: #0c326f;
+  --azul-claro: #edf5ff;
+  --azul-medio: #d4e5ff;
+  --azul-borda: #adcdff;
+  --azul-destaque: #2670e8;
+  --azul-escuro: #071d41;
+
+  /* Cores da bandeira, usadas em detalhes */
+  --verde-brasil: #168821;
+  --amarelo-brasil: #ffcd07;
 
   --cinza-fundo: #f8fafc;
   --cinza-cartao: #ffffff;
@@ -52,7 +58,7 @@ button {
 button:focus-visible,
 input:focus-visible,
 a:focus-visible {
-  outline: 3px solid var(--rosa-destaque);
+  outline: 3px solid var(--azul-destaque);
   outline-offset: 2px;
 }
 
@@ -107,11 +113,11 @@ a:focus-visible {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #ec4899, var(--rosa-principal));
+  background: linear-gradient(135deg, var(--verde-brasil), var(--azul-principal));
   color: #ffffff;
   font-size: 15px;
   font-weight: 700;
-  box-shadow: 0 4px 10px rgba(219, 39, 119, 0.25);
+  box-shadow: 0 4px 10px rgba(19, 81, 180, 0.25);
 }
 
 .navegacao {
@@ -133,16 +139,16 @@ a:focus-visible {
 }
 
 .navegacao button:hover {
-  background: var(--rosa-claro);
-  color: var(--rosa-principal);
-  border-color: var(--rosa-borda);
+  background: var(--azul-claro);
+  color: var(--azul-principal);
+  border-color: var(--azul-borda);
 }
 
 .navegacao button.ativo {
-  background: var(--rosa-principal);
-  border-color: var(--rosa-principal);
+  background: var(--azul-principal);
+  border-color: var(--azul-principal);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(219, 39, 119, 0.25);
+  box-shadow: 0 2px 8px rgba(19, 81, 180, 0.25);
 }
 
 /* conteudo principal */
@@ -160,10 +166,10 @@ a:focus-visible {
   width: 100%;
   padding: 56px 30px;
   text-align: center;
-  border: 1px solid var(--rosa-medio);
+  border: 1px solid var(--azul-medio);
   border-radius: 18px;
-  background: linear-gradient(135deg, var(--rosa-claro) 0%, #f8fafc 60%, #ffffff 100%);
-  box-shadow: 0 4px 20px rgba(219, 39, 119, 0.05);
+  background: linear-gradient(135deg, var(--azul-claro) 0%, #f8fafc 60%, #ffffff 100%);
+  box-shadow: 0 4px 20px rgba(19, 81, 180, 0.05);
 }
 
 .etiqueta {
@@ -171,8 +177,8 @@ a:focus-visible {
   margin-bottom: 15px;
   padding: 7px 13px;
   border-radius: 30px;
-  background: var(--rosa-medio);
-  color: var(--rosa-principal);
+  background: var(--azul-medio);
+  color: var(--azul-principal);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -219,8 +225,8 @@ a:focus-visible {
 }
 
 .busca input:focus {
-  border-color: var(--rosa-principal);
-  box-shadow: 0 0 0 3px rgba(219, 39, 119, 0.15);
+  border-color: var(--azul-principal);
+  box-shadow: 0 0 0 3px rgba(19, 81, 180, 0.15);
 }
 
 .busca button {
@@ -228,7 +234,7 @@ a:focus-visible {
   padding: 0 28px;
   border: none;
   border-radius: 10px;
-  background: var(--rosa-principal);
+  background: var(--azul-principal);
   color: #ffffff;
   font-weight: 700;
   font-size: 14px;
@@ -236,8 +242,8 @@ a:focus-visible {
 }
 
 .busca button:hover {
-  background: var(--rosa-hover);
-  box-shadow: 0 4px 12px rgba(219, 39, 119, 0.25);
+  background: var(--azul-hover);
+  box-shadow: 0 4px 12px rgba(19, 81, 180, 0.25);
 }
 
 /* filtros */
@@ -272,9 +278,9 @@ a:focus-visible {
 }
 
 .categorias button:hover {
-  background: var(--rosa-claro);
-  border-color: var(--rosa-destaque);
-  color: var(--rosa-principal);
+  background: var(--azul-claro);
+  border-color: var(--azul-destaque);
+  color: var(--azul-principal);
 }
 
 .categorias button.selecionado {
@@ -330,8 +336,8 @@ a:focus-visible {
 
 .cartao:hover {
   transform: translateY(-3px);
-  border-color: var(--rosa-borda);
-  box-shadow: 0 10px 25px rgba(219, 39, 119, 0.08);
+  border-color: var(--azul-borda);
+  box-shadow: 0 10px 25px rgba(19, 81, 180, 0.08);
 }
 
 .cartao-topo {
@@ -346,9 +352,9 @@ a:focus-visible {
   max-width: 70%;
   padding: 7px 10px;
   border-radius: 6px;
-  background: var(--rosa-claro);
-  border: 1px solid var(--rosa-medio);
-  color: var(--rosa-principal);
+  background: var(--azul-claro);
+  border: 1px solid var(--azul-medio);
+  color: var(--azul-principal);
   font-size: 11px;
   font-weight: 700;
   line-height: 1.4;
@@ -366,14 +372,14 @@ a:focus-visible {
 }
 
 .botao-salvar:hover {
-  background: var(--rosa-claro);
-  color: var(--rosa-principal);
+  background: var(--azul-claro);
+  color: var(--azul-principal);
 }
 
 .botao-salvar[aria-pressed="true"] {
-  color: var(--rosa-principal);
-  background: var(--rosa-claro);
-  border-color: var(--rosa-borda);
+  color: var(--azul-principal);
+  background: var(--azul-claro);
+  border-color: var(--azul-borda);
 }
 
 .cartao h3 {
@@ -424,16 +430,16 @@ a:focus-visible {
 .primario {
   flex: 1;
   padding: 10px 14px;
-  border: 1px solid var(--rosa-principal);
-  background: var(--rosa-principal);
+  border: 1px solid var(--azul-principal);
+  background: var(--azul-principal);
   color: #ffffff;
   transition: background 0.2s, box-shadow 0.2s;
 }
 
 .primario:hover {
-  background: var(--rosa-hover);
-  border-color: var(--rosa-hover);
-  box-shadow: 0 2px 8px rgba(219, 39, 119, 0.25);
+  background: var(--azul-hover);
+  border-color: var(--azul-hover);
+  box-shadow: 0 2px 8px rgba(19, 81, 180, 0.25);
 }
 
 .secundario {
@@ -591,7 +597,7 @@ th {
   margin-top: 20px;
   padding: 13px 20px;
   border-radius: 9px;
-  background: var(--rosa-principal);
+  background: var(--azul-principal);
   color: #ffffff;
   text-decoration: none;
   font-size: 13px;
@@ -600,8 +606,8 @@ th {
 }
 
 .link-oficial:hover {
-  background: var(--rosa-hover);
-  box-shadow: 0 4px 12px rgba(219, 39, 119, 0.25);
+  background: var(--azul-hover);
+  box-shadow: 0 4px 12px rgba(19, 81, 180, 0.25);
 }
 
 /* telas de status (carregando / erro) */
@@ -616,13 +622,13 @@ th {
 
 .painel-status {
   background: #ffffff;
-  border: 1px solid var(--rosa-medio);
+  border: 1px solid var(--azul-medio);
   border-radius: 16px;
   padding: 36px 30px;
   max-width: 540px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(219, 39, 119, 0.08);
+  box-shadow: 0 6px 20px rgba(19, 81, 180, 0.08);
 }
 
 .painel-status-icone {
@@ -656,7 +662,7 @@ th {
 }
 
 .botao-acao {
-  background: var(--rosa-principal);
+  background: var(--azul-principal);
   color: #ffffff;
   border: none;
   border-radius: 8px;
@@ -668,8 +674,8 @@ th {
 }
 
 .botao-acao:hover {
-  background: var(--rosa-hover);
-  box-shadow: 0 4px 12px rgba(219, 39, 119, 0.25);
+  background: var(--azul-hover);
+  box-shadow: 0 4px 12px rgba(19, 81, 180, 0.25);
 }
 
 /* tablet */
@@ -741,5 +747,145 @@ th {
 
   .modal {
     padding: 23px;
+  }
+}
+
+/* ===== Identidade brasileira e fauna ===== */
+
+/* faixa verde, amarela e azul no topo da página */
+.topo::before {
+  content: "";
+  display: block;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    var(--verde-brasil) 0 33%,
+    var(--amarelo-brasil) 33% 66%,
+    var(--azul-principal) 66% 100%
+  );
+}
+
+.categorias button.selecionado {
+  background: var(--azul-escuro);
+  border-color: var(--azul-escuro);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero > *:not(.fauna-hero) {
+  position: relative;
+  z-index: 1;
+}
+
+.fauna-hero {
+  position: absolute;
+}
+
+.fauna-preguica {
+  top: 0;
+  left: 40px;
+  width: 120px;
+  height: 130px;
+}
+
+.fauna-tatu {
+  bottom: 8px;
+  left: 24px;
+  width: 120px;
+  height: 90px;
+}
+
+.fauna-borboleta-1 {
+  top: 30px;
+  right: 120px;
+  width: 50px;
+  height: 42px;
+  transform: rotate(-14deg);
+}
+
+.fauna-borboleta-2 {
+  top: 78px;
+  right: 46px;
+  width: 36px;
+  height: 30px;
+  transform: rotate(16deg);
+}
+
+.fauna-arara {
+  bottom: 0;
+  right: 28px;
+  width: 150px;
+  height: 150px;
+}
+
+.painel-status-animal {
+  display: block;
+  width: auto;
+  height: 110px;
+  margin: 0 auto 12px;
+}
+
+.vazio-animal {
+  display: block;
+  width: auto;
+  height: 110px;
+  margin: 0 auto 12px;
+}
+
+.rodape {
+  justify-content: center;
+}
+
+.rodape-fauna {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  padding-bottom: 4px;
+  background: linear-gradient(to top, #c5e1a5 0 12px, transparent 12px);
+  border-radius: 0 0 12px 12px;
+}
+
+.rodape-fauna svg {
+  width: auto;
+  height: 100px;
+}
+
+.busca-animal {
+  position: absolute;
+  top: calc(100% - 11px);
+  left: 36px;
+  width: 80px;
+  height: 112px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marca-animal {
+  width: 52px;
+  height: 52px;
+  margin-left: -4px;
+}
+
+@media (max-width: 1100px) {
+  .fauna-hero {
+    display: none;
+  }
+}
+
+@media (min-width: 651px) {
+  .hero {
+    padding-bottom: 116px;
+  }
+}
+
+@media (max-width: 650px) {
+  .busca-animal {
+    display: none;
   }
 }

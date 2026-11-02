@@ -9,7 +9,7 @@ beneficios = [
         "requisitos": "Atender aos critérios de renda e às demais regras vigentes. Estar no CadÚnico não garante a concessão automática.",
         "documentos": "CPF e documentos dos integrantes da família, conforme orientação do atendimento municipal.",
         "comoSolicitar": "Realizar ou atualizar o Cadastro Único no município e aguardar o processo de seleção.",
-        "canal": "https://www.gov.br/mds/pt-br/acoes-e-programas/bolsa-familia/bolsa-familia"
+        "canal": "https://www.gov.br/mds/pt-br/acoes-e-programas/bolsa-familia"
     },
     {
         "id": 2,
@@ -47,7 +47,7 @@ beneficios = [
         "requisitos": "Atender aos critérios de renda, composição familiar, cadastro e seleção previstos no programa.",
         "documentos": "CPF e documentos de identificação necessários para utilização do benefício.",
         "comoSolicitar": "Manter o CadÚnico atualizado e acompanhar as orientações oficiais sobre seleção e acesso.",
-        "canal": "https://www.gov.br/mds/pt-br/acoes-e-programas/gas-do-povo"
+        "canal": "https://www.gov.br/pt-br/servicos/programa-gas-do-povo"
     },
     {
         "id": 5,
@@ -71,7 +71,7 @@ beneficios = [
         "requisitos": "Atender às condições de renda, modalidade, disponibilidade e demais regras do programa.",
         "documentos": "Documentos pessoais, comprovantes de renda e outros documentos exigidos.",
         "comoSolicitar": "Consultar a prefeitura, entidade organizadora ou instituição financeira responsável pela modalidade.",
-        "canal": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/habitacao/programa-minha-casa-minha-vida/sobre-o-minha-casa-minha-vida-1"
+        "canal": "https://www.gov.br/cidades/pt-br/assuntos/materias/programa-minha-casa-minha-vida"
     },
     {
         "id": 7,
@@ -119,7 +119,7 @@ beneficios = [
         "requisitos": "Atender aos critérios vigentes e possuir autorização quando necessária.",
         "documentos": "Documento com foto, CPF e autorização de retirada quando aplicável.",
         "comoSolicitar": "Consultar as orientações do programa, obter autorização quando necessária e procurar uma farmácia credenciada.",
-        "canal": "https://www.gov.br/saude/pt-br/composicao/seidigi/meususdigital/perguntas-e-respostas/cidadao/13-o-que-e-o"
+        "canal": "https://www.gov.br/saude/pt-br/composicao/saps/dignidade-menstrual"
     },
     {
         "id": 11,
@@ -155,7 +155,7 @@ beneficios = [
         "requisitos": "O atendimento depende da disponibilidade e dos critérios locais.",
         "documentos": "Consultar diretamente a unidade de atendimento.",
         "comoSolicitar": "Procurar cozinhas solidárias participantes e serviços locais de assistência social.",
-        "canal": "https://www.gov.br/mds/pt-br/acoes-e-programas/acesso-a-alimentos-e-a-agua/programa-cozinha-solidaria/programa-cozinha-solidaria"
+        "canal": "https://www.gov.br/mds/pt-br/acoes-e-programas/acesso-a-alimentos-e-a-agua/programa-cozinha-solidaria"
     },
     {
         "id": 14,
@@ -167,6 +167,6 @@ beneficios = [
         "requisitos": "Atender às regras aplicáveis aos produtores e às organizações executoras.",
         "documentos": "Documentação relativa à agricultura familiar ou à instituição participante.",
         "comoSolicitar": "Consultar chamadas públicas, órgãos executores e instituições participantes.",
-        "canal": "https://www.gov.br/mds/pt-br/acoes-e-programas/acesso-a-alimentos-e-a-agua/programa-de-aquisicao-de-alimentos"
+        "canal": "https://www.gov.br/mds/pt-br/acoes-e-programas/inclusao-produtiva-rural/paa"
     }
 ]
