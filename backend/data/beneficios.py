@@ -167,6 +167,6 @@ beneficios = [
         "requisitos": "Atender às regras aplicáveis aos produtores e às organizações executoras.",
         "documentos": "Documentação relativa à agricultura familiar ou à instituição participante.",
         "comoSolicitar": "Consultar chamadas públicas, órgãos executores e instituições participantes.",
-        "canal": "https://www.gov.br/mds/pt-br/acoes-e-programas/inclusao-produtiva-rural/paa"
+        "canal": "https://www.gov.br/mds/pt-br/acoes-e-programas/acesso-a-alimentos-e-a-agua/programa-de-aquisicao-de-alimentos"
     }
 ]
