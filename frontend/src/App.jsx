@@ -200,7 +200,7 @@ function App() {
           <Borboleta className="fauna-hero fauna-borboleta-2" />
           <Arara className="fauna-hero fauna-arara" />
 
-          <span className="etiqueta">Catálogo de benefícios federais TESTEEEE</span>
+          <span className="etiqueta">Catálogo de benefícios federais</span>
 
           <h1>Consulte Programas e Benefícios Sociais</h1>
 
