@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import logo from "./assets/logo.jpg";
 import {
-  Tucano,
   Arara,
   AraraAzul,
   Borboleta,
@@ -113,8 +113,7 @@ function App() {
         <header className="topo">
           <div className="topo-conteudo">
             <div className="marca">
-              <span className="marca-icone">GS</span>
-              <span>Guia Social</span> <Tucano className="marca-animal" />
+              <img src={logo} alt="Guia Social" className="marca-logo" />
             </div>
           </div>
         </header>
@@ -135,8 +134,7 @@ function App() {
         <header className="topo">
           <div className="topo-conteudo">
             <div className="marca">
-              <span className="marca-icone">GS</span>
-              <span>Guia Social</span> <Tucano className="marca-animal" />
+              <img src={logo} alt="Guia Social" className="marca-logo" />
             </div>
           </div>
         </header>
@@ -166,8 +164,7 @@ function App() {
       <header className="topo">
         <div className="topo-conteudo">
           <button className="marca" onClick={() => setPagina("catalogo")}>
-            <span className="marca-icone">GS</span>
-            <span>Guia Social</span> <Tucano className="marca-animal" />
+            <img src={logo} alt="Guia Social" className="marca-logo" />
           </button>
 
           <nav className="navegacao" aria-label="Menu principal">
