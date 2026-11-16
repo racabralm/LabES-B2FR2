@@ -354,3 +354,5 @@ Atualmente, os testes verificam:
 
 A documentação do projeto apresenta a definição da demanda, os requisitos, wireframes, modelagem de domínio, arquitetura
 e tecnologias utilizadas.
+
+:)
