@@ -345,7 +345,7 @@ Atualmente, os testes verificam:
 
 - [x] **TG1** — Definição do produto, requisitos, modelagem e arquitetura.
 - [x] **TG2** — Pipeline de Integração Contínua e Entrega Contínua (CI/CD).
-- [ ] **TG3** — Implementação da aplicação.
+- [x] **TG3** — Implementação da aplicação.
 - [ ] **TG4** — Testes e documentação final.
 
 ---
