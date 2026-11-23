@@ -1,6 +1,14 @@
 # Guia Social
 
-https://guia-social-labes.onrender.com/
+| Acesso | Link |
+|:--|:--|
+| Aplicação publicada | https://guia-social-labes.onrender.com/ |
+| API | https://guia-social-api.onrender.com/beneficios/ |
+| Documentação interativa da API | https://guia-social-api.onrender.com/docs |
+| Testes automatizados | [`backend/tests/`](backend/tests/) |
+
+> No plano gratuito do Render, a API entra em repouso após alguns minutos sem uso. O primeiro acesso pode levar
+> até 1 minuto; depois disso, a navegação fica normal.
 
 Aplicação web para centralizar informações sobre programas e benefícios sociais, facilitando a consulta de critérios,
 documentos necessários, formas de solicitação e canais oficiais para pessoas em situação de vulnerabilidade social.
@@ -70,7 +78,9 @@ guia-social/
 │   └── tests/
 │       ├── __init__.py
 │       ├── test_programa_social.py
-│       └── test_beneficios_api.py
+│       ├── test_beneficio_service.py
+│       ├── test_beneficios_api.py
+│       └── test_beneficios_complementares.py
 │
 ├── frontend/
 │   ├── public/
@@ -78,6 +88,7 @@ guia-social/
 │   │   ├── assets/
 │   │   ├── App.css
 │   │   ├── App.jsx
+│   │   ├── Fauna.jsx
 │   │   ├── index.css
 │   │   └── main.jsx
 │   │
@@ -110,6 +121,7 @@ guia-social/
 - **`frontend/`**: contém a interface web desenvolvida em React com Vite.
 - **`frontend/src/App.jsx`**: concentra a interface principal e consome os benefícios disponibilizados pela API.
 - **`frontend/src/App.css`**: contém os estilos da interface.
+- **`frontend/src/Fauna.jsx`**: ilustrações da fauna brasileira usadas na interface.
 - **`docs/`**: contém a documentação, requisitos, wireframes, diagramas e demais artefatos.
 - **`.github/workflows/`**: contém os arquivos da esteira de integração contínua, responsável por executar os testes
   automaticamente.
@@ -124,13 +136,87 @@ guia-social/
 | Frontend            | React, HTML, CSS e JavaScript             |
 | Ferramenta frontend | Vite                                      |
 | Backend             | FastAPI                                   |
-| Banco de dados      | PostgreSQL                                |
+| Dados               | Catálogo em memória (`backend/data/beneficios.py`); PostgreSQL previsto |
 | API                 | API REST própria desenvolvida com FastAPI |
-| Cloud               | AWS (EC2 e RDS)                           |
+| Hospedagem          | Render (API e site, com deploy automático) |
 | Containerização     | Docker                                    |
 | CI/CD               | GitHub Actions                            |
 | Controle de versão  | Git e GitHub                              |
 | Testes              | Pytest                                    |
+
+---
+
+## Manual de Instalação
+
+### Pré-requisitos
+
+- Git
+- Python 3.11 ou superior
+- Node.js 22 e npm (apenas para executar o frontend)
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/racabralm/LabES-B2FR2.git
+cd LabES-B2FR2
+```
+
+### 2. Backend (API)
+
+```bash
+python -m pip install -r requirements.txt
+uvicorn backend.main:app --reload
+```
+
+A API ficará disponível em `http://127.0.0.1:8000`, com a documentação em `http://127.0.0.1:8000/docs`.
+
+### 3. Frontend
+
+Em outro terminal, com a API em execução:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Acesse o endereço informado pelo Vite, normalmente `http://localhost:5173`.
+
+### 4. Executar os testes
+
+```bash
+python -m pytest backend/tests -v
+```
+
+Também é possível executar os testes dentro de um container Docker:
+
+```bash
+docker build -t guia-social .
+docker run --rm guia-social
+```
+
+---
+
+## Manual de Utilização
+
+A aplicação pode ser usada direto pelo navegador, sem cadastro, em https://guia-social-labes.onrender.com/.
+
+1. **Consultar o catálogo:** a página inicial lista todos os programas e benefícios disponíveis.
+2. **Pesquisar:** digite na barra de pesquisa o nome do programa, uma categoria ou o público (ex.: "bolsa", "idoso",
+   "energia"). A busca ignora acentos e letras maiúsculas.
+3. **Filtrar por categoria:** clique em uma categoria (Saúde, Educação, Habitação etc.) para ver apenas os programas
+   daquela área. Clique em "Todas" para voltar à lista completa.
+4. **Ver detalhes:** clique em "Ver detalhes" em um programa para consultar público-alvo, cadastro exigido,
+   requisitos, documentos necessários e como solicitar.
+5. **Acessar o canal oficial:** na janela de detalhes, use "Consultar página oficial do benefício" para abrir a página
+   do programa no gov.br.
+6. **Salvar favoritos:** clique em "Salvar" no card do programa. Os favoritos ficam reunidos no menu "Favoritos"
+   durante a sessão.
+7. **Comparar programas:** clique em "+ Comparar" em até três programas e abra o menu "Comparador" para ver as
+   informações lado a lado.
+
+> O Guia Social orienta e direciona para as fontes oficiais. Ele não concede benefícios nem informa se uma pessoa tem
+> direito a um programa: as regras devem ser confirmadas no site oficial.
 
 ---
 
@@ -293,35 +379,40 @@ Catálogo / Pesquisa / Filtros / Favoritos / Comparador / Detalhes
 
 ## Testes Automatizados
 
-Os testes automatizados do backend utilizam Pytest.
+Os testes do backend utilizam **Pytest** e ficam em [`backend/tests/`](backend/tests/). A suíte combina testes
+unitários (classe de domínio e funções de consulta) e testes de integração das rotas da API, feitos com o `TestClient`
+do FastAPI.
 
-Para executar todos os testes:
+Ao todo são **34 casos de teste**, que resultam em **47 execuções** (casos parametrizados executam o mesmo teste com
+várias entradas).
+
+| Arquivo | Tipo | O que verifica | Execuções |
+|:--|:--|:--|:-:|
+| `test_programa_social.py` | Unitário | Classe `ProgramaSocial`: link HTTPS, busca no nome, Cadastro Único e criação do objeto | 5 |
+| `test_beneficio_service.py` | Unitário | Normalização de texto, listagem, consulta por ID e busca por nome | 10 |
+| `test_beneficios_api.py` | Integração | Rota inicial, listagem, consulta por ID, erro 404, buscas e campos obrigatórios | 13 |
+| `test_beneficios_complementares.py` | Integração | IDs fora do catálogo e inválidos (404 e 422), acentos, nome vazio, integridade dos IDs, campos opcionais, OpenAPI e CORS | 19 |
+
+Para executar:
 
 ```bash
-pytest
+python -m pytest backend/tests -v
 ```
 
-Para visualizar mais detalhes durante a execução:
+---
 
-```bash
-pytest -v
-```
+## Integração e Entrega Contínuas (CI/CD)
 
-Atualmente, os testes verificam:
+A esteira está definida em [`.github/workflows/ci.yml`](.github/workflows/ci.yml) e roda no GitHub Actions a cada
+push e pull request:
 
-- criação e comportamento da classe `ProgramaSocial`;
-- funcionamento da API;
-- quantidade de benefícios disponíveis;
-- consulta de benefício por ID;
-- retorno de erro para benefício inexistente;
-- pesquisa por nome;
-- pesquisa sem acentos;
-- pesquisa utilizando letras maiúsculas;
-- pesquisa parcial;
-- pesquisa com múltiplos resultados;
-- pesquisa sem resultados;
-- presença dos campos obrigatórios dos benefícios;
-- campos adicionais de benefícios que possuem mais de um canal oficial.
+| Job | Depende de | O que faz |
+|:--|:--|:--|
+| `testes` | — | Configura o Python 3.11, instala as dependências e executa `python -m pytest backend/ -v` |
+| `docker` | `testes` | Constrói a imagem Docker da aplicação |
+
+O job `docker` só roda se todos os testes passarem. A publicação é feita pelo Render, que está conectado à branch
+`main` e atualiza a API e o site automaticamente a cada novo commit.
 
 ---
 
@@ -337,7 +428,7 @@ Atualmente, os testes verificam:
 - [x] Integrar frontend e backend por meio da API REST.
 - [ ] Persistir favoritos do usuário.
 - [ ] Integrar os dados com PostgreSQL.
-- [ ] Publicar a aplicação em ambiente de cloud.
+- [x] Publicar a aplicação em ambiente de cloud (Render).
 
 ---
 
@@ -346,13 +437,18 @@ Atualmente, os testes verificam:
 - [x] **TG1** — Definição do produto, requisitos, modelagem e arquitetura.
 - [x] **TG2** — Pipeline de Integração Contínua e Entrega Contínua (CI/CD).
 - [x] **TG3** — Implementação da aplicação.
-- [ ] **TG4** — Testes e documentação final.
+- [x] **TG4** — Testes e documentação final.
 
 ---
 
 ## Documentação
 
-A documentação do projeto apresenta a definição da demanda, os requisitos, wireframes, modelagem de domínio, arquitetura
-e tecnologias utilizadas.
+A documentação do projeto está na pasta [`docs/`](docs/):
 
-:)
+| Documento | Conteúdo |
+|:--|:--|
+| Documentação do projeto (TG1) | Definição da demanda, requisitos, wireframes, modelagem de domínio, arquitetura e tecnologias |
+| TG4 – Testes | Estratégia de testes, casos de teste, evidências de execução e esteira de CI/CD |
+
+Além disso, a documentação interativa da API pode ser consultada em
+https://guia-social-api.onrender.com/docs.
